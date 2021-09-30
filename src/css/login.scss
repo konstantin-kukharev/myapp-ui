@@ -25,31 +25,31 @@ body {
 .login::before, .login::after {
   content: "";
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 800px;
+  height: 800px;
   border-top-left-radius: 40%;
-  border-top-right-radius: 45%;
+  border-top-right-radius: 40%;
   border-bottom-left-radius: 35%;
   border-bottom-right-radius: 40%;
   z-index: -1;
 }
 .login::before {
   left: 50%;
-  bottom: -20%;
-  background-color: #97bcea;
-  opacity: 1;
-  -webkit-animation: wawes 6s infinite linear;
-  -moz-animation: wawes 6s infinite linear;
-  animation: wawes 6s infinite linear;
+  bottom:-50%;
+  background-color: #5cc0ff;
+  opacity: 0.5;
+  -webkit-animation: wawes 25s infinite linear;
+  -moz-animation: wawes 25s infinite linear;
+  animation: wawes 25s infinite linear;
 }
 .login::after {
-  left: 5%;
-  bottom: -210%;
+  left: 30%;
+  bottom: -100%;
   background-color: #ffdbdc;
   opacity: 0.5;
-  -webkit-animation: wawes 7s infinite;
-  -moz-animation: wawes 7s infinite;
-  animation: wawes 7s infinite;
+  -webkit-animation: wawes 25s infinite;
+  -moz-animation: wawes 25s infinite;
+  animation: wawes 25s infinite;
 }
 .login > input {
   display: block;
