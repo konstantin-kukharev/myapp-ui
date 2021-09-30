@@ -1,21 +1,21 @@
 import React from 'react';
-// import api from './module/request/api';
-import './css/login.scss';
+import api from './module/request/api';
+import session from './module/auth/session';
+import backendSettings from "./module/settings/backend";
+import AuthForm from "./form/auth";
 
-// const basePath = `${process.env.REACT_APP_API_PATH}`
-// const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`
-// const currentDomain = `${process.env.REACT_APP_CURRENT_DOMAIN}` || 'localhost'
+const App = (settings :backendSettings) => {
+    const s :session = new session(settings)
+    const a :api = new api(settings)
+    const [authorized] = React.useState(s.isAuthorized());
 
-const App = () => {
-    //const backend = new api(publicKey, currentDomain, basePath)
+    if (!authorized) {
+        return (
+            <AuthForm api={a}/>
+        )
+    }
 
-    return (
-        <form className="login">
-            <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
-            <button>Login</button>
-        </form>
-    )
+    return <h1>authorized</h1>
 }
 
 export default App

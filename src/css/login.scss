@@ -20,7 +20,6 @@ body {
   -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
   -moz-transition: -moz-transform 300ms, box-shadow 300ms;
   transition: transform 300ms, box-shadow 300ms;
-  box-shadow: 1px 1px 10px #305589;
 }
 .login::before, .login::after {
   content: "";
@@ -37,7 +36,7 @@ body {
   left: 50%;
   bottom:-50%;
   background-color: #5cc0ff;
-  opacity: 0.5;
+  opacity: 0.7;
   -webkit-animation: wawes 25s infinite linear;
   -moz-animation: wawes 25s infinite linear;
   animation: wawes 25s infinite linear;
@@ -56,12 +55,13 @@ body {
   border-radius: 5px;
   font-size: 16px;
   background: white;
-  width: 100%;
+  width: calc(100% - 10px);
   border: 0;
   padding: 10px 10px;
   margin: 15px -10px;
 }
 .login > button {
+  float: right;
   cursor: pointer;
   color: #fff;
   font-size: 16px;
