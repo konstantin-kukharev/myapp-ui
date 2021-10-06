@@ -39,7 +39,7 @@ ReactDOM.render(
                             <Login {...apiSettings} />
                         </React.StrictMode>
                     </Route>
-                    <RoutePrivate exact path={appSettings?.basePath}>
+                    <RoutePrivate exact path={appSettings?.basePath} appSettings={appSettings}>
                         <React.StrictMode>
                             <App {...apiSettings} />
                         </React.StrictMode>
