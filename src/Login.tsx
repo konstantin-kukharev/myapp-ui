@@ -4,9 +4,9 @@ import session from './module/auth/session';
 import backendSettings from "./module/settings/backend";
 import AuthForm from "./form/auth";
 
-const Login = (settings :backendSettings) => {
-    const s :session = new session(settings)
-    const a :api = new api(settings)
+const Login = (apiSettings :backendSettings) => {
+    const s :session = new session(apiSettings)
+    const a :api = new api(apiSettings)
     const [authorized] = React.useState(s.isAuthorized());
 
     if (!authorized) {

@@ -8,11 +8,11 @@ class session {
     private readonly tokenString: string | undefined
     private readonly authorized: boolean = false
 
-    constructor(settings :backendSettings) {
-        this.tokenKey = settings.tokenKey
-        this.cookieKey = settings.cookieKey
+    constructor(apiSettings :backendSettings) {
+        this.tokenKey = apiSettings.tokenKey
+        this.cookieKey = apiSettings.cookieKey
         this.tokenString = this.getTokenString()
-        if (this.tokenString && (this.isTokenValid(settings.publicKey))) {
+        if (this.tokenString && (this.isTokenValid(apiSettings.publicKey))) {
              this.authorized = true
         } else {
             this.removeToken()

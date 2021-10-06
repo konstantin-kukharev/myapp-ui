@@ -5,6 +5,7 @@ import Login from './Login'
 import Error from './Error'
 import './css/index.scss'
 import backendSettings from "./module/settings/backend"
+import settings from "./module/settings/app"
 
 import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router'
@@ -14,7 +15,11 @@ import configureStore, { history } from './redux/storeConfig'
 
 const store = configureStore({})
 
-const settings :backendSettings = {
+const appSettings :settings = {
+    basePath: process.env.REACT_APP_BASE_PATH ? `${process.env.REACT_APP_BASE_PATH}` : '',
+}
+
+const apiSettings :backendSettings = {
     tokenKey: process.env.REACT_APP_TOKEN_KEY ? `${process.env.REACT_APP_TOKEN_KEY}` : 'local_token',
     cookieKey: process.env.REACT_APP_COOKIE_KEY ? `${process.env.REACT_APP_COOKIE_KEY}` : 'local[session_key]',
     publicKey: process.env.REACT_APP_PUBLIC_KEY ? `${process.env.REACT_APP_PUBLIC_KEY}` : '',
@@ -29,14 +34,14 @@ ReactDOM.render(
         <ConnectedRouter history={history}>
             <>
                 <Switch>
-                    <Route exact path="/login">
+                    <Route exact path={appSettings?.basePath + "/login"}>
                         <React.StrictMode>
-                            <Login {...settings} />
+                            <Login {...apiSettings} />
                         </React.StrictMode>
                     </Route>
-                    <RoutePrivate exact path="/">
+                    <RoutePrivate exact path={appSettings?.basePath}>
                         <React.StrictMode>
-                            <App {...settings} />
+                            <App {...apiSettings} />
                         </React.StrictMode>
                     </RoutePrivate>
                     <Route component={Error} />
