@@ -26,7 +26,9 @@ const auth = async (c: credentials): Promise<answer> => {
         `https://github.com/login/oauth/authorize`,
         {
             params: c,
-            headers: {},
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
         }
     ).then((resp) => {
         return {
