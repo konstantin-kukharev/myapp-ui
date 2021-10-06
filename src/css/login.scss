@@ -1,7 +1,3 @@
-body {
-  background-color: #81A5D5FF;
-}
-
 .login {
   overflow: hidden;
   background-color: white;
@@ -11,7 +7,7 @@ body {
   top: 50%;
   left: 50%;
   width: 70%;
-  max-width: 400px;
+  max-width: calc(100vh - 40px);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -24,8 +20,8 @@ body {
 .login::before, .login::after {
   content: "";
   position: absolute;
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   border-top-left-radius: 40%;
   border-top-right-radius: 40%;
   border-bottom-left-radius: 35%;

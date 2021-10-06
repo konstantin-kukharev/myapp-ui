@@ -1,8 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './css/index.scss';
-import backendSettings from "./module/settings/backend";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import Login from './Login'
+import Error from './Error'
+import './css/index.scss'
+import backendSettings from "./module/settings/backend"
+
+import { Provider } from 'react-redux'
+import { Route, Switch } from 'react-router'
+import { ConnectedRouter } from 'connected-react-router'
+import RoutePrivate from './module/RoutePrivate'
+import configureStore, { history } from './redux/storeConfig'
+
+const store = configureStore({})
 
 const settings :backendSettings = {
     tokenKey: process.env.REACT_APP_TOKEN_KEY ? `${process.env.REACT_APP_TOKEN_KEY}` : 'local_token',
@@ -15,8 +25,24 @@ const settings :backendSettings = {
 }
 
 ReactDOM.render(
-    <React.StrictMode>
-        <App {...settings} />
-    </React.StrictMode>,
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <>
+                <Switch>
+                    <Route exact path="/login">
+                        <React.StrictMode>
+                            <Login {...settings} />
+                        </React.StrictMode>
+                    </Route>
+                    <RoutePrivate exact path="/">
+                        <React.StrictMode>
+                            <App {...settings} />
+                        </React.StrictMode>
+                    </RoutePrivate>
+                    <Route component={Error} />
+                </Switch>
+            </>
+        </ConnectedRouter>
+    </Provider>,
     document.getElementById('root')
 );
